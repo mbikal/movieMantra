@@ -45,7 +45,7 @@
   gap: 16px;
 }
 
-.player iframe {
+.player video {
   width: 100%;
   min-height: 420px;
   border: none;

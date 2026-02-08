@@ -52,6 +52,14 @@ function Watch() {
     return movies.filter((item) => item.id !== movie?.id).slice(0, 8)
   }, [movies, movie])
 
+  const mediaSrc = useMemo(() => {
+    if (!movie?.link) return ''
+    if (movie.link.startsWith('http://') || movie.link.startsWith('https://')) {
+      return movie.link
+    }
+    return `https://${movie.link}`
+  }, [movie])
+
   return (
     <div className="watch-shell">
       <header className="watch-topbar">
@@ -75,12 +83,12 @@ function Watch() {
 
       <main className="watch-grid">
         <section className="player">
-          {movie?.link ? (
-            <iframe
-              title={movie.title}
-              src={movie.link}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+          {mediaSrc ? (
+            <video
+              key={mediaSrc}
+              src={mediaSrc}
+              controls
+              playsInline
             />
           ) : (
             <div className="player-placeholder">
