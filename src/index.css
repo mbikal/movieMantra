@@ -1,0 +1,33 @@
+:root {
+  font-family: 'Work Sans', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #e9edf2;
+  background-color: #1f242e;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #1f242e;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}

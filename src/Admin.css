@@ -1,0 +1,261 @@
+.admin-shell {
+  min-height: 100vh;
+  padding: 32px;
+  background: #1f242e;
+  color: #e9edf2;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-header h1 {
+  margin: 6px 0 0;
+  font-size: 2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  color: #9aa3af;
+  margin: 0;
+}
+
+.back {
+  color: #9bd5e4;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 24px;
+}
+
+.editor {
+  background: #252b36;
+  padding: 24px;
+  border-radius: 14px;
+  display: grid;
+  gap: 16px;
+}
+
+.editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor h2 {
+  margin: 0;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: #c7d0dc;
+}
+
+.field input,
+.field textarea {
+  background: #1b2028;
+  border: 1px solid #323949;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #e9edf2;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.checkbox {
+  align-items: center;
+}
+
+.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.primary {
+  background: linear-gradient(140deg, #49e8b8, #00bcd4);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: #0b0d14;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ghost {
+  background: #1b2028;
+  border: 1px solid #323949;
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: #c7d0dc;
+  cursor: pointer;
+}
+
+.status {
+  font-size: 0.85rem;
+  color: #9aa3af;
+}
+
+.library {
+  background: #252b36;
+  padding: 24px;
+  border-radius: 14px;
+  display: grid;
+  gap: 16px;
+}
+
+.library-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.library-list {
+  display: grid;
+  gap: 12px;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.library-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: #1b2028;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.library-card .thumb {
+  width: 80px;
+  height: 110px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, #3b475a, #1c2230);
+  background-size: cover;
+  background-position: center;
+}
+
+.library-info h3 {
+  margin: 0;
+}
+
+.library-info p {
+  margin: 6px 0 0;
+  color: #aeb7c2;
+  font-size: 0.85rem;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(73, 232, 184, 0.2);
+  color: #49e8b8;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.library-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.library-actions button {
+  background: #30394a;
+  color: #e9edf2;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.library-actions .danger {
+  background: #4c2b2b;
+  color: #f2b4b4;
+}
+
+.admin-card {
+  max-width: 420px;
+  margin: 80px auto;
+  background: #252b36;
+  padding: 32px;
+  border-radius: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.admin-card h1 {
+  margin: 0;
+}
+
+.admin-card p {
+  margin: 0;
+  color: #aeb7c2;
+}
+
+.admin-form {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-form input {
+  background: #1b2028;
+  border: 1px solid #323949;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #e9edf2;
+}
+
+.admin-form button {
+  background: linear-gradient(140deg, #49e8b8, #00bcd4);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: #0b0d14;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 980px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-shell {
+    padding: 20px;
+  }
+}
