@@ -11,6 +11,8 @@ function Watch() {
   const [movie, setMovie] = useState(null)
   const [movies, setMovies] = useState([])
   const [status, setStatus] = useState('')
+  const streamBaseUrl = (import.meta.env.VITE_STREAM_BASE_URL || '').replace(/\/$/, '')
+  const forceProxy = import.meta.env.VITE_STREAM_FORCE_PROXY !== 'false'
 
   useEffect(() => {
     let ignore = false
@@ -60,6 +62,12 @@ function Watch() {
     return `https://${movie.link}`
   }, [movie])
 
+  const videoSrc = useMemo(() => {
+    if (!mediaSrc) return ''
+    if (!streamBaseUrl || !forceProxy) return mediaSrc
+    return `${streamBaseUrl}/api/stream?url=${encodeURIComponent(mediaSrc)}`
+  }, [mediaSrc, streamBaseUrl, forceProxy])
+
   return (
     <div className="watch-shell">
       <header className="watch-topbar">
@@ -83,10 +91,10 @@ function Watch() {
 
       <main className="watch-grid">
         <section className="player">
-          {mediaSrc ? (
+          {videoSrc ? (
             <video
-              key={mediaSrc}
-              src={mediaSrc}
+              key={videoSrc}
+              src={videoSrc}
               controls
               playsInline
             />

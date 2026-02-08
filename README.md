@@ -1,16 +1,43 @@
-# React + Vite
+# Video Stream Backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Express backend that streams remote video files with full HTTP Range support.
 
-Currently, two official plugins are available:
+## Requirements
+- Node.js 18+
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
 
-## React Compiler
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The server runs at `http://localhost:4000` by default.
 
-## Expanding the ESLint configuration
+## Endpoints
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `GET /health` → `{ ok: true }`
+- `GET /api/movies` → list of movies with stream endpoints
+- `GET /api/movies/:id` → movie details
+- `GET /api/stream/:id` → streams video with Range support
+
+## Movies
+
+Edit `movies.js` and set `remoteUrl` for each movie. It must be a **direct** video file URL (MP4 or HLS `.m3u8`). Share pages that require cookies or redirects to HTML will be rejected with:
+
+```
+Provided link is not a direct video file URL. Use a direct MP4/HLS URL.
+```
+
+## Test in Browser
+
+```html
+<video controls src="http://localhost:4000/api/stream/1"></video>
+```
+
+## Notes
+
+- Range requests are forwarded upstream to support seeking.
+- Only URLs in `movies.js` are allowed (no arbitrary URL input).
+- Basic rate limiting protects the streaming endpoint.
